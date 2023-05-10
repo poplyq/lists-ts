@@ -6,6 +6,7 @@ import { ICard, ITask } from '../../types/types';
 import cloneDeep from 'lodash.clonedeep';
 import {
   addTaskFunc,
+  updateOrderCardsFunc,
   updateOrderFunc,
   updateTaskNameFunc,
   updateTaskOrderFunc,
@@ -32,7 +33,7 @@ export const fetchCards = () => {
   };
 };
 
-export const UpdateOrder = (
+export const UpdateOrderTasks = (
   arr: ICard[],
   prevCard: ICard,
   currCard: ICard,
@@ -45,7 +46,25 @@ export const UpdateOrder = (
     );
     const clone = cloneDeep(newCards);
     dispatch({
-      type: CardActionTypes.UPDATE_ORDER,
+      type: CardActionTypes.UPDATE_ORDER_TASKS,
+      payload: clone,
+    });
+  };
+};
+export const UpdateOrderCards = (
+  arr: ICard[],
+  prevCard: ICard,
+  currCard: ICard,
+  currboard: number,
+  prevboard: number
+) => {
+  return async (dispatch: Dispatch<CardsAction>) => {
+    const newCards = <ICard[]>(
+      updateOrderCardsFunc(arr, prevCard, currCard, currboard, prevboard)
+    )
+ const clone = cloneDeep(newCards);
+    dispatch({
+      type: CardActionTypes.UPDATE_ORDER_CARDS,
       payload: clone,
     });
   };

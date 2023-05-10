@@ -10,6 +10,7 @@ interface CardsProps {
 }
 
 const Cards: FC<CardsProps> = ({ cards }) => {
+
   const [isAdd, setIsAdd] = useState<boolean>(false);
   const [cardsArray, setCardsArray] = useState<ICard[]>([]);
   const [dragedTask, setDragedTask] = useState<ITask>({

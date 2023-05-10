@@ -27,7 +27,9 @@ export const cardReducer = (
       return { error: null, cards: [] };
     case CardActionTypes.UPDATE_TASK_NAME_ERROR:
       return { error: null, cards: action.payload };
-    case CardActionTypes.UPDATE_ORDER:
+    case CardActionTypes.UPDATE_ORDER_TASKS:
+      return { error: null, cards: action.payload };
+    case CardActionTypes.UPDATE_ORDER_CARDS:
       return { error: null, cards: action.payload };
     case CardActionTypes.ADD_CARD:
       return { error: null, cards: action.payload };

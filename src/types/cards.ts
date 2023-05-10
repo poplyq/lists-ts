@@ -18,7 +18,8 @@ export enum CardActionTypes {
   UPDATE_CARDNAME_ERROR = 'UPDATE_CARDNAME_ERROR',
   UPDATE_TASK_NAME = 'UPDATE_TASK_NAME',
   UPDATE_TASK_NAME_ERROR = 'UPDATE_TASK_NAME_ERROR',
-  UPDATE_ORDER = 'UPDATE_ORDER',
+  UPDATE_ORDER_TASKS = 'UPDATE_ORDER_TASKS',
+  UPDATE_ORDER_CARDS = 'UPDATE_ORDER_CARDS',
   DELETE_TASK = 'DELETE_TASK',
   DELETE_TASK_ERROR = 'DELETE_TASK_ERROR',
   SEND_UPDATED_TASKS = 'SEND_UPDATED_TASKS',
@@ -64,8 +65,12 @@ interface UpdateTaskNameError {
   type: CardActionTypes.UPDATE_TASK_NAME_ERROR;
   payload: ICard[];
 }
-interface UpdateOrder {
-  type: CardActionTypes.UPDATE_ORDER;
+interface UpdateOrderTasks {
+  type: CardActionTypes.UPDATE_ORDER_TASKS;
+  payload: ICard[];
+}
+interface UpdateOrderCards {
+  type: CardActionTypes.UPDATE_ORDER_CARDS;
   payload: ICard[];
 }
 interface AddCard {
@@ -113,7 +118,8 @@ export type CardsAction =
   | SendCardAction
   | UpdateCardName
   | UpdateCardNameError
-  | UpdateOrder
+  | UpdateOrderTasks
+  | UpdateOrderCards
   | AddCard
   | AddTask
   | SendCardActionSuccess

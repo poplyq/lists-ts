@@ -32,7 +32,7 @@ const Task: FC<TaskProps> = ({
   cardsArray,
 }) => {
   const [isEdit, setIsEdit] = useState<boolean>(false);
-  const { UpdateOrder } = useActions();
+  const { UpdateOrderTasks} = useActions();
   const click = (e: React.MouseEvent<HTMLImageElement>) => {
     setIsEdit(true);
   };
@@ -43,14 +43,16 @@ const Task: FC<TaskProps> = ({
   const hoverEvent = (e: { preventDefault: () => void }) => {
     e.preventDefault();
     setDraged(taskIndex);
+  
     if (dragedElement !== taskIndex && dragClass === 'task') {
+
       const array: ITask[] = coveredSlice(taskArray, dragedElement, taskIndex);
       let newobj: ICard = {
         cardIndex: cardIndex,
         cardName: cardsArray[cardIndex - 1].cardName,
         tasks: array,
       };
-      UpdateOrder(cardsArray, newobj, newobj, cardIndex, cardIndex);
+      UpdateOrderTasks(cardsArray, newobj, newobj, cardIndex, cardIndex);
     }
   };
   const dragEnd = (e: { preventDefault: () => void }) => {

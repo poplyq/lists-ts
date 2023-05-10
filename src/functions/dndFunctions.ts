@@ -1,17 +1,27 @@
+// eslint-disable-next-line
 import { ICard, ITask } from '../types/types';
 
+const updateNumbers = (arr: ITask[]) => {
+  arr.forEach((e, ind) => {
+    e.taskIndex = ind + 1;
+  });
+  return arr;
+};
+
 export const coveredSlice = (array: ITask[], drag: number, cover: number) => {
+  // eslint-disable-next-line
   let newArr = <ITask[]>[];
 
   if (drag > cover) {
-    return (newArr = [
+    return updateNumbers(newArr = [
       ...array.slice(0, cover - 1),
       array[drag - 1],
       array[cover - 1],
       ...array.slice(drag, array.length),
     ]);
   } else if (drag < cover) {
-    return (newArr = [
+    // eslint-disable-next-line
+    return updateNumbers(newArr = [
       ...array.slice(0, drag - 1),
       array[cover - 1],
       array[drag - 1],

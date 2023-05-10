@@ -7,6 +7,7 @@ import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { useActions } from '../../hooks/useActions';
 
 const Desk: FC = () => {
+
   let state = useTypedSelector((state) => state.cards);
   const { fetchCards } = useActions();
   useEffect(() => {

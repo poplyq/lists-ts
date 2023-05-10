@@ -34,7 +34,7 @@ const Card: FC<CardProps> = ({
   setDragClass,
   dragClass,
 }) => {
-  const { updateCardName } = useActions();
+  const { updateCardName, UpdateOrderTasks, UpdateOrderCards } = useActions();
   const [cardNameCurr, setCardNameCurr] = useState<string>(
     cardsArray[cardIndex - 1].cardName
   );
@@ -45,17 +45,16 @@ const Card: FC<CardProps> = ({
   const [isDragable, setIsDragble] = useState<boolean>(true);
   const cardRef = useRef() as RefObject<HTMLTextAreaElement>;
   const [isDrag, setIsDrag] = useState<boolean>(false);
-  const { UpdateOrder } = useActions();
-
   const click = (e: React.MouseEvent<HTMLButtonElement>) => {
     setIsAdd(true);
   };
   useEffect(() => {
     if (cardsArray[cardIndex - 1].tasks) {
       setTaskArray(cardsArray[cardIndex - 1].tasks);
+      setCardNameCurr(cardsArray[cardIndex - 1].cardName);
     }
     // eslint-disable-next-line
-  }, [cardsArray[cardIndex]?.tasks]);
+  }, [cardsArray[cardIndex - 1]?.tasks]);
 
   const changeName = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setCardNameCurr(e.target.value);
@@ -90,7 +89,7 @@ const Card: FC<CardProps> = ({
 
   const addDragedTask = (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    setBoard(cardIndex);
+
     if (board && board !== cardIndex && dragClass !== 'board') {
       setDragClass('task');
       const currcard = addTaskOnBoad(
@@ -99,17 +98,17 @@ const Card: FC<CardProps> = ({
         dragedTask
       );
       const prevcard = deleteTaskFromBoad(cardsArray[board - 1], dragedElement);
-      UpdateOrder(cardsArray, prevcard, currcard, cardIndex, board);
-    } else if (board && board !== cardIndex) {
-      // Для замены карточек порядок board and id заменен специально
-      UpdateOrder(
+      UpdateOrderTasks(cardsArray, prevcard, currcard, cardIndex, board);
+    } else if (board && board !== cardIndex && dragClass === 'board') {
+      UpdateOrderCards(
         cardsArray,
         cardsArray[board - 1],
         cardsArray[cardIndex - 1],
-        board,
-        cardIndex
+        cardIndex,
+        board
       );
     }
+    setBoard(cardIndex);
   };
 
   const drop = (e: { preventDefault: () => void }) => {

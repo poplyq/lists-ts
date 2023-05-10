@@ -7,6 +7,7 @@ const updateNumbers = (arr: ITask[]) => {
   return arr;
 };
 const updateNumbersCard = (arr: ICard[]) => {
+
   arr.forEach((e, ind) => {
     e.cardIndex = ind + 1;
   });
@@ -38,6 +39,35 @@ export const updateOrderFunc = (
     return newarr;
   } else {
     return [...arr.slice(0, prevboard - 1), prevCard, ...arr.slice(prevboard)];
+  }
+};
+
+export const updateOrderCardsFunc = (
+  arr: ICard[],
+  prevCard: ICard,
+  currCard: ICard,
+  currboard: number,
+  prevboard: number
+) => {
+  
+  if (currboard > prevboard) {
+    let newarr: ICard[] = updateNumbersCard([
+      ...arr.slice(0, prevboard - 1),
+      currCard,
+      prevCard,
+      ...arr.slice(currboard),
+    ]);
+    return newarr;
+  } else if (currboard < prevboard) {
+    let newarr: ICard[] = updateNumbersCard([
+      ...arr.slice(0, currboard - 1),
+      prevCard,
+      currCard,
+      ...arr.slice(prevboard),
+    ]);
+    return newarr;
+  } else {
+    return arr;
   }
 };
 
