@@ -1,9 +1,10 @@
 .card {
     min-width: 280px;
     height: fit-content;
+    max-height: 90vh;
     background-color: #ebecf0;
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 9px;
     cursor: pointer;
   }
   
@@ -91,4 +92,9 @@ z-index: 4;
     background-color: #fff;
     position: relative;
     z-index: 5;
+  }
+  .taskContainer{
+    padding: 5px 0 5px 0;
+overflow: auto;
+max-height: 50vh;
   }

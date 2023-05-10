@@ -139,6 +139,7 @@ const Card: FC<CardProps> = ({
           ...
         </button>
       </div>
+      <div className='taskContainer'>
       {taskArray?.map((task, index) => (
         <div key={`${task.taskIndex} + ${index}`}>
           <Task
@@ -156,6 +157,7 @@ const Card: FC<CardProps> = ({
           />
         </div>
       ))}
+      </div>
       {isAdd ? (
         <AddTask
           cardIndex={cardIndex}
