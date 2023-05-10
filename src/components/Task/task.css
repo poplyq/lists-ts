@@ -1,0 +1,27 @@
+.task {
+    background-color: #fdfeff;
+    margin-top: 10px;
+    padding: 5px;
+    border-radius: 5px;
+    transition: all 0.3s linear;
+    position: relative;
+  }
+  .task:hover {
+    background-color: #dfdfe0;
+  }
+
+  .taskPen{
+    position: absolute;
+    right: 10px;
+    top: 6px;
+    width: 10px;
+    filter: invert(100%);
+    padding: 4px;
+  
+  }
+  .taskPen:hover{
+    filter: invert(50%);
+    border: 1px #d7d8da solid;
+    border-radius: 3px;
+  }
+  

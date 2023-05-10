@@ -1,0 +1,41 @@
+.cards {
+    background-color: rgb(20, 127, 189);
+    width: 95%;
+    height: 93vh;
+    border-left: aliceblue 0.3px solid;
+    padding: 20px;
+    display: flex;
+    gap: 10px;
+    overflow-x: scroll;
+    box-sizing: border-box;
+  }
+
+  
+  .cardsAdd {
+    background-color: rgb(78, 172, 227);
+    padding: 10px;
+    min-width: 200px;
+    height: 40px;
+    border: none;
+    color: aliceblue;
+    border-radius: 5px;
+    text-align: center;
+    position: relative;
+    transition: all 0.3s linear;
+  }
+  
+  .cardsAdd:hover {
+    background-color: rgb(82, 180, 233);
+    cursor: pointer;
+  }
+  
+  .cardsAdd::before {
+    content: "+";
+    position: absolute;
+    left: 20px;
+    top: 10px;
+    font-size: 20px;
+    color: aliceblue;
+    font-size: 20px;
+  }
+  
