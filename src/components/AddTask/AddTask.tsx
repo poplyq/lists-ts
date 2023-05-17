@@ -1,10 +1,10 @@
 import React, { FC, useState } from 'react';
 import './addtask.css';
-import { useActions } from '../../hooks/useActions';
+import { useCardsActions } from '../../hooks/useActions';
 import { ICard, ITask } from '../../types/types';
 
 interface AddTaskProps {
-  cardIndex: number;
+  cardOrder: number;
   setIsAdd(arg: boolean): void;
   taskArray: ITask[];
   cardsArray: ICard[];
@@ -12,10 +12,10 @@ interface AddTaskProps {
 const AddTask: FC<AddTaskProps> = ({
   setIsAdd,
   taskArray,
-  cardIndex,
+  cardOrder,
   cardsArray,
 }) => {
-  const { AddTask } = useActions();
+  const { AddTask } = useCardsActions();
   const [task, setTask] = useState<string>('');
 
   const getTask = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -24,9 +24,9 @@ const AddTask: FC<AddTaskProps> = ({
   const click = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (task) {
       AddTask(
-        [...taskArray, { taskIndex: taskArray.length + 1, task: task }],
+        [...taskArray, { taskOrder: taskArray.length + 1, taskName: task }],
         cardsArray,
-        cardIndex
+        cardOrder
       );
       setIsAdd(false);
     }

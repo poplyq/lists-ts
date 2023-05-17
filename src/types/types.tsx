@@ -1,10 +1,19 @@
 export interface ITask {
-  taskIndex: number;
-  task: string;
+  taskOrder: number;
+  taskName: string;
+  id?: number
+
 }
 
 export interface ICard {
-  cardIndex: number;
+  cardOrder: number;
   cardName: string;
   tasks: ITask[];
+}
+
+export interface IUser {
+  email: string;
+  id: string;
+  isActivate: boolean;
+
 }

@@ -8,6 +8,7 @@
     cursor: pointer;
     position: relative;
   }
+
   .addCardsInput {
     margin-top: 10px;
     width: 94%;
@@ -24,9 +25,11 @@
     color: aliceblue;
     font-size: 15px;
   }
+
   .addCardsCloseContainer{
   position: relative;
   }
+  
   .addCardsClose {
     border: 0;
     font-size: 30px;
