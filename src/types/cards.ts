@@ -18,16 +18,20 @@ export enum CardActionTypes {
   UPDATE_CARDNAME_ERROR = 'UPDATE_CARDNAME_ERROR',
   UPDATE_TASK_NAME = 'UPDATE_TASK_NAME',
   UPDATE_TASK_NAME_ERROR = 'UPDATE_TASK_NAME_ERROR',
+  UPDATE_TASK_NAME_SUCCESS = 'UPDATE_TASK_NAME_SUCCESS',
   UPDATE_ORDER_TASKS = 'UPDATE_ORDER_TASKS',
+  UPDATE_CARD_ORDER = 'UPDATE_CARD_ORDER',
   UPDATE_ORDER_CARDS = 'UPDATE_ORDER_CARDS',
+  UPDATE_ORDER_CARDS_ERROR = 'UPDATE_ORDER_CARDS_ERROR',
+  UPDATE_ORDER_CARDS_SUCCESS = 'UPDATE_ORDER_CARDS_SUCCESS',
   DELETE_TASK = 'DELETE_TASK',
   DELETE_TASK_ERROR = 'DELETE_TASK_ERROR',
+  DELETE_CARD_SUCCESS = 'DELETE_CARD_SUCCESS',
   SEND_UPDATED_TASKS = 'SEND_UPDATED_TASKS',
   SEND_UPDATED_TASKS_ERROR = 'SEND_UPDATED_TASKS_ERROR',
-  DELETE_TO_UPDATE = 'DELETE_TO_UPDATE',
-  DELETE_TO_UPDATE_ERROR = 'DELETE_TO_UPDATE_ERROR',
-  UPDATE_ALL_DATA = 'UPDATE_ALL_DATA',
-  UPDATE_ALL_DATA_ERROR = 'UPDATE_ALL_DATA_ERROR',
+  SEND_UPDATED_TASKS_SUCCESS = 'SEND_UPDATED_TASKS_SUCCESS',
+  DELETE_CARD = 'DELETE_CARD',
+  DELETE_CARD_ERROR = 'DELETE_CARD_ERROR',
 }
 interface FetchCardsAction {
   type: CardActionTypes.FETCH_CARDS;
@@ -42,14 +46,15 @@ interface FetchCardsActionSuccess {
 }
 interface SendCardActionError {
   type: CardActionTypes.SEND_CARD_ERROR;
-  payload: string;
+  payload: ICard[];
 }
 interface SendCardActionSuccess {
-  type: CardActionTypes.SEND_CARD_ERROR;
+  type: CardActionTypes.SEND_CARD_SUCCESS;
   payload: ICard[];
 }
 interface SendCardAction {
   type: CardActionTypes.SEND_CARD;
+  payload: ICard[];
 }
 interface UpdateCardName {
   type: CardActionTypes.UPDATE_CARDNAME;
@@ -65,13 +70,28 @@ interface UpdateTaskNameError {
   type: CardActionTypes.UPDATE_TASK_NAME_ERROR;
   payload: ICard[];
 }
+interface UpdateTaskNameSuccess {
+  type: CardActionTypes.UPDATE_TASK_NAME_SUCCESS;
+  payload: ICard[];
+}
 interface UpdateOrderTasks {
   type: CardActionTypes.UPDATE_ORDER_TASKS;
   payload: ICard[];
 }
+interface UpdateCardOrder {
+  type: CardActionTypes.UPDATE_CARD_ORDER;
+  payload: ICard[];
+}
 interface UpdateOrderCards {
   type: CardActionTypes.UPDATE_ORDER_CARDS;
+}
+interface UpdateOrderCardsSuccess {
+  type: CardActionTypes.UPDATE_ORDER_CARDS_SUCCESS;
   payload: ICard[];
+}
+interface UpdateOrderCardsError {
+  type: CardActionTypes.UPDATE_ORDER_CARDS_ERROR;
+  payload: string;
 }
 interface AddCard {
   type: CardActionTypes.ADD_CARD;
@@ -92,21 +112,23 @@ interface SendUpdatedTasks {
   type: CardActionTypes.SEND_UPDATED_TASKS;
 }
 interface SendUpdatedTasksError {
-  type: CardActionTypes.SEND_UPDATED_TASKS;
+  type: CardActionTypes.SEND_UPDATED_TASKS_ERROR;
   payload: ICard[];
 }
-interface DeleteToUpdate {
-  type: CardActionTypes.DELETE_TO_UPDATE;
-}
-interface DeleteToUpdateError {
-  type: CardActionTypes.DELETE_TO_UPDATE_ERROR;
+interface SendUpdatedTasksSuccess {
+  type: CardActionTypes.SEND_UPDATED_TASKS_SUCCESS;
   payload: ICard[];
 }
-interface UpdateAllData {
-  type: CardActionTypes.UPDATE_ALL_DATA;
+interface DeleteCard {
+  type: CardActionTypes.DELETE_CARD;
+  payload: ICard[];
 }
-interface UpdateAllDataError {
-  type: CardActionTypes.UPDATE_ALL_DATA_ERROR;
+interface DeleteCardError {
+  type: CardActionTypes.DELETE_CARD_ERROR;
+  payload: ICard[];
+}
+interface DeleteCardSuccess {
+  type: CardActionTypes.DELETE_CARD_SUCCESS;
   payload: ICard[];
 }
 
@@ -114,22 +136,26 @@ export type CardsAction =
   | FetchCardsAction
   | FetchCardsActionError
   | FetchCardsActionSuccess
-  | SendCardActionError
   | SendCardAction
+  | SendCardActionError
+  | SendCardActionSuccess
   | UpdateCardName
   | UpdateCardNameError
   | UpdateOrderTasks
+  | UpdateCardOrder
   | UpdateOrderCards
+  | UpdateOrderCardsSuccess
+  | UpdateOrderCardsError
   | AddCard
   | AddTask
-  | SendCardActionSuccess
   | DeleteTaskAction
   | DeleteTaskActionError
   | SendUpdatedTasks
   | SendUpdatedTasksError
+  | SendUpdatedTasksSuccess
   | UpdateTaskName
+  | UpdateTaskNameSuccess
   | UpdateTaskNameError
-  | DeleteToUpdate
-  | DeleteToUpdateError
-  | UpdateAllData
-  | UpdateAllDataError;
+  | DeleteCard
+  | DeleteCardError
+  | DeleteCardSuccess;

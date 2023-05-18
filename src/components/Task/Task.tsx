@@ -1,16 +1,14 @@
 import React, { FC, useState } from 'react';
-import pen from './pen.png';
 import { ICard, ITask } from '../../types/types';
 import TaskEdit from './TaskEdit';
-
 import './task.css';
 import { coveredSlice } from '../../functions/dndFunctions';
-import { useActions } from '../../hooks/useActions';
+import { useCardsActions } from '../../hooks/useActions';
 
 interface TaskProps {
-  cardIndex: number;
+  cardOrder: number;
   task: ITask;
-  taskIndex: number;
+  taskOrder: number;
   taskArray: ITask[];
   setDraged(arg: number): void;
   dragedElement: number;
@@ -21,9 +19,9 @@ interface TaskProps {
   cardsArray: ICard[];
 }
 const Task: FC<TaskProps> = ({
-  cardIndex,
+  cardOrder,
   task,
-  taskIndex,
+  taskOrder,
   taskArray,
   setDraged,
   dragedElement,
@@ -32,27 +30,26 @@ const Task: FC<TaskProps> = ({
   cardsArray,
 }) => {
   const [isEdit, setIsEdit] = useState<boolean>(false);
-  const { UpdateOrderTasks} = useActions();
+  const { UpdateOrderTasks } = useCardsActions();
   const click = (e: React.MouseEvent<HTMLImageElement>) => {
     setIsEdit(true);
   };
   const drageEvent = () => {
-    setDraged(taskIndex);
-    setDragedTask(taskArray[taskIndex - 1]);
+    setDraged(taskOrder);
+    setDragedTask(taskArray[taskOrder - 1]);
   };
   const hoverEvent = (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    setDraged(taskIndex);
-  
-    if (dragedElement !== taskIndex && dragClass === 'task') {
+    setDraged(taskOrder);
 
-      const array: ITask[] = coveredSlice(taskArray, dragedElement, taskIndex);
+    if (dragedElement !== taskOrder && dragClass === 'task') {
+      const array: ITask[] = coveredSlice(taskArray, dragedElement, taskOrder);
       let newobj: ICard = {
-        cardIndex: cardIndex,
-        cardName: cardsArray[cardIndex - 1].cardName,
+        cardOrder: cardOrder,
+        cardName: cardsArray[cardOrder - 1].cardName,
         tasks: array,
       };
-      UpdateOrderTasks(cardsArray, newobj, newobj, cardIndex, cardIndex);
+      UpdateOrderTasks(cardsArray, newobj, newobj, cardOrder, cardOrder);
     }
   };
   const dragEnd = (e: { preventDefault: () => void }) => {
@@ -65,18 +62,19 @@ const Task: FC<TaskProps> = ({
       onDragStart={drageEvent}
       onDragOver={hoverEvent}
       onDrop={dragEnd}
+      onClick={click}
     >
-      {task.task}
+      {task.taskName}
       {isEdit ? (
         <TaskEdit
           cardsArray={cardsArray}
-          cardIndex={cardIndex}
-          taskIndex={taskIndex}
+          cardOrder={cardOrder}
+          taskOrder={taskOrder}
           task={task}
           setIsEdit={setIsEdit}
         />
       ) : (
-        <img className="taskPen" src={pen} alt="" onClick={click} />
+        <></>
       )}
     </div>
   );
