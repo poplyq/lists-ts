@@ -12,12 +12,13 @@ function App() {
     if (localStorage.getItem('token')) {
       checkAuth();
     }
+    // eslint-disable-next-line
   }, []);
   return (
     <div>
       <Routes>
         <Route path="/registration" element={<RegistrationForm />} />
-        <Route path="/login" element={<LoginForm />} />
+        <Route path="*" element={<LoginForm />} />
         <Route path="/desk" element={<Desk />} />
       </Routes>
     </div>

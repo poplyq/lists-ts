@@ -21,8 +21,8 @@ export const coveredSlice = (array: ITask[], drag: number, cover: number) => {
       ])
     );
   } else if (drag < cover) {
-    // eslint-disable-next-line
     return updateNumbers(
+      // eslint-disable-next-line
       (newArr = [
         ...array.slice(0, drag - 1),
         array[cover - 1],

@@ -52,4 +52,53 @@
 
 .navbarTitle {
   padding-top: 20px;
+  cursor: pointer;
+}
+.navBarCon {
+  display: flex;
+}
+.navBarCon::after {
+  content: '';
+  width: 19px;
+  height: 14px;
+  --c: linear-gradient(rgb(88, 160, 202) 0 0);
+  background-color: #fff;
+  background: var(--c) 0% 0%, var(--c) 55% 0%;
+  background-size: 4.5px 50%, 4.5px 90%;
+  background-repeat: no-repeat;
+  position: relative;
+  right: 79px;
+  top: 24px;
+}
+.navBarCon:hover::after {
+  cursor: pointer;
+  width: 19px;
+  height: 14px;
+  --c: linear-gradient(rgb(88, 160, 202) 0 0);
+  background: var(--c) 0% 0%, var(--c) 55% 0%;
+
+  background-size: 4.5px 60%, 4.5px 100%;
+  background-repeat: no-repeat;
+  animation: b2 0.7s infinite linear;
+}
+@keyframes b2 {
+  20% {
+    background-size: 4.5px 60%, 4.5px 90%;
+  }
+  40% {
+    background-size: 4.5px 70%, 4.5px 80%;
+  }
+  60% {
+    background-size: 4.5px 80%, 4.5px 70%;
+  }
+  80% {
+    background-size: 4.5px 90%, 4.5px 60%;
+  }
+}
+.custom-loader {
+  margin-top: 20px;
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+  border-radius: 5px;
 }

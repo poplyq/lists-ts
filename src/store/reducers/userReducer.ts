@@ -28,7 +28,7 @@ export const userReducer = (
       return state;
     case UserActionTypes.USER_LOGOUT_SUCCESS:
       return { user: null, isAuth: false, error: null };
-    case UserActionTypes.USER_LOGIN_ERROR:
+    case UserActionTypes.USER_LOGOUT_ERROR:
       return { user: null, isAuth: false, error: action.payload };
     case UserActionTypes.CHECK_AUTH:
       return { user: state.user, isAuth: true, error: null, isLoading: true };

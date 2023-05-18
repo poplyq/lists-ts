@@ -19,6 +19,7 @@ export const RegistrationForm: FC = () => {
         setEqual('');
       }
     }
+    // eslint-disable-next-line
   }, [repeatePass]);
 
   const createAcc = () => {

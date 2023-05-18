@@ -54,7 +54,7 @@ export const userLogout = () => {
       localStorage.removeItem('token');
     } catch (e) {
       dispatch({
-        type: UserActionTypes.USER_LOGIN_ERROR,
+        type: UserActionTypes.USER_LOGOUT_ERROR,
         payload: 'Ошибка при выходе',
       });
     }

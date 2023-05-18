@@ -1,5 +1,4 @@
 import { AxiosResponse } from 'axios';
-import _ from 'lodash';
 import { AuthResponse } from '../types/response/AuthResponse';
 import $api from '../http';
 
