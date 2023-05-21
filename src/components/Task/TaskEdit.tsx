@@ -10,7 +10,7 @@ interface TaskEditProps {
   taskOrder: number;
   setIsEdit(arg: boolean): void;
 }
-const TaskEdit:FC<TaskEditProps> = ({
+const TaskEdit: FC<TaskEditProps> = ({
   task,
   cardOrder,
   taskOrder,
@@ -27,17 +27,14 @@ const TaskEdit:FC<TaskEditProps> = ({
     deleteTask(cardsArray, cardOrder, taskOrder);
     setIsEdit(false);
   };
-  const saveTask = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const saveTask = () => {
+    setIsEdit(false);
     updateTaskName(cardsArray, cardOrder, taskOrder, value);
+  };
+  const close = () => {
     setIsEdit(false);
   };
-  useEffect(() => {
-    const closeArea = document.querySelector('.taskEdit');
-    closeArea?.addEventListener('click', () => {
-      setIsEdit(false);
-    });
-    // eslint-disable-next-line
-  }, []);
+
   return (
     <div>
       <button className="taskEditButton">Открыть карточку</button>
@@ -47,7 +44,7 @@ const TaskEdit:FC<TaskEditProps> = ({
       <button className="taskEditSave" onClick={saveTask}>
         Сохранить
       </button>
-      <div className="taskEdit"></div>
+      <div className="taskEdit" onClick={close}></div>
       <textarea
         className="taskEditArea"
         value={value}

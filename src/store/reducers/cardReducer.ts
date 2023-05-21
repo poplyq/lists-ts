@@ -18,7 +18,7 @@ export const cardReducer = (
     case CardActionTypes.SEND_CARD:
       return { error: null, cards: action.payload };
     case CardActionTypes.SEND_CARD_ERROR:
-      return { error: action.payload, cards: action.payload };
+      return { error: action.payload, cards: [] };
     case CardActionTypes.SEND_CARD_SUCCESS:
       return { error: null, cards: action.payload };
     case CardActionTypes.UPDATE_CARDNAME:

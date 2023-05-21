@@ -74,18 +74,16 @@ export const addTaskFunc = (
   taskarr: ITask[],
   cardOrder: number
 ) => {
-  let newarr: ICard[] = [];
   let newobj: ICard = {
     cardOrder: cardarr[cardOrder - 1].cardOrder,
     cardName: cardarr[cardOrder - 1].cardName,
     tasks: taskarr,
   };
-  // eslint-disable-next-line
-  return (newarr = [
+  return [
     ...cardarr.slice(0, cardOrder - 1),
     newobj,
     ...cardarr.slice(cardOrder),
-  ]);
+  ];
 };
 
 export const updateTaskOrderFunc = (
@@ -93,7 +91,6 @@ export const updateTaskOrderFunc = (
   cardOrder: number,
   taskOrder: number
 ) => {
-  let newarr: ICard[] = [];
   let slicetasks = [
     ...cardarr[cardOrder - 1].tasks.slice(0, taskOrder - 1),
     ...cardarr[cardOrder - 1].tasks.slice(taskOrder),
@@ -104,12 +101,11 @@ export const updateTaskOrderFunc = (
     cardName: cardarr[cardOrder - 1].cardName,
     tasks: newtasks,
   };
-  // eslint-disable-next-line
-  return (newarr = [
+  return [
     ...cardarr.slice(0, cardOrder - 1),
     newobj,
     ...cardarr.slice(cardOrder),
-  ]);
+  ];
 };
 export const updateTaskNameFunc = (
   cardarr: ICard[],
@@ -117,7 +113,6 @@ export const updateTaskNameFunc = (
   taskOrder: number,
   newTaskName: string
 ) => {
-  let newarr: ICard[] = [];
   let slicetasks: ITask[] = [
     ...cardarr[cardOrder - 1].tasks.slice(0, taskOrder - 1),
     { taskOrder: taskOrder, taskName: newTaskName },
@@ -128,10 +123,9 @@ export const updateTaskNameFunc = (
     cardName: cardarr[cardOrder - 1].cardName,
     tasks: slicetasks,
   };
-  // eslint-disable-next-line
-  return (newarr = [
+  return [
     ...cardarr.slice(0, cardOrder - 1),
     newobj,
     ...cardarr.slice(cardOrder),
-  ]);
+  ];
 };

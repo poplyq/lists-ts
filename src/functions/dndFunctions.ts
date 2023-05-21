@@ -8,28 +8,20 @@ const updateNumbers = (arr: ITask[]) => {
 };
 
 export const coveredSlice = (array: ITask[], drag: number, cover: number) => {
-  // eslint-disable-next-line
-  let newArr = <ITask[]>[];
-
   if (drag > cover) {
-    return updateNumbers(
-      (newArr = [
-        ...array.slice(0, cover - 1),
-        array[drag - 1],
-        array[cover - 1],
-        ...array.slice(drag, array.length),
-      ])
-    );
+    return updateNumbers([
+      ...array.slice(0, cover - 1),
+      array[drag - 1],
+      array[cover - 1],
+      ...array.slice(drag, array.length),
+    ]);
   } else if (drag < cover) {
-    return updateNumbers(
-      // eslint-disable-next-line
-      (newArr = [
-        ...array.slice(0, drag - 1),
-        array[cover - 1],
-        array[drag - 1],
-        ...array.slice(cover, array.length),
-      ])
-    );
+    return updateNumbers([
+      ...array.slice(0, drag - 1),
+      array[cover - 1],
+      array[drag - 1],
+      ...array.slice(cover, array.length),
+    ]);
   } else {
     return array;
   }

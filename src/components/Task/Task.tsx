@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useCallback, useState } from 'react';
 import { ICard, ITask } from '../../types/types';
 import TaskEdit from './TaskEdit';
 import './task.css';
@@ -31,9 +31,9 @@ const Task: FC<TaskProps> = ({
 }) => {
   const [isEdit, setIsEdit] = useState<boolean>(false);
   const { UpdateOrderTasks } = useCardsActions();
-  const click = (e: React.MouseEvent<HTMLImageElement>) => {
-    setIsEdit(true);
-  };
+  // const click = (e: React.MouseEvent<HTMLImageElement>) => {
+  //   setIsEdit(true);
+  // };
   const drageEvent = () => {
     setDraged(taskOrder);
     setDragedTask(taskArray[taskOrder - 1]);
@@ -56,26 +56,28 @@ const Task: FC<TaskProps> = ({
     e.preventDefault();
   };
   return (
-    <div
-      className="task"
-      draggable="true"
-      onDragStart={drageEvent}
-      onDragOver={hoverEvent}
-      onDrop={dragEnd}
-      onClick={click}
-    >
-      {task.taskName}
-      {isEdit ? (
-        <TaskEdit
-          cardsArray={cardsArray}
-          cardOrder={cardOrder}
-          taskOrder={taskOrder}
-          task={task}
-          setIsEdit={setIsEdit}
-        />
-      ) : (
-        <></>
-      )}
+    <div>
+      <div
+        className="task"
+        draggable="true"
+        onDragStart={drageEvent}
+        onDragOver={hoverEvent}
+        onDrop={dragEnd}
+        onClick={() => setIsEdit(true)}
+      >
+        <p>{task.taskName}</p>
+      </div>
+      <div>
+        {isEdit && (
+          <TaskEdit
+            cardsArray={cardsArray}
+            cardOrder={cardOrder}
+            taskOrder={taskOrder}
+            task={task}
+            setIsEdit={setIsEdit}
+          />
+        )}
+      </div>
     </div>
   );
 };
