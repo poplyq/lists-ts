@@ -1,17 +1,36 @@
 html,
 body {
-    padding: 0;
-    margin: 0;
-    font-size: 14px;
-    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Noto Sans,Ubuntu,Droid Sans,Helvetica Neue,sans-serif;
-    line-height: 20px;
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Noto Sans,
+    Ubuntu, Droid Sans, Helvetica Neue, sans-serif;
+  line-height: 20px;
+}
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+  padding: 0;
+}
+.loader {
+  margin-top: 50vh;
+  margin-left: 50%;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #1c2932;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
   }
-  h1,
-  h2,
-  h3,
-  h4,
-  p {
-    margin: 0;
-    padding: 0;
+  100% {
+    transform: rotate(360deg);
   }
-  
+}

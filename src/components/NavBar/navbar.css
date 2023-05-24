@@ -1,49 +1,104 @@
 .navbar {
-    background-color: rgb(0, 121, 191);
-    display: flex;
-    justify-content: space-between;
-    padding: 0 20px;
-    color: aliceblue;
-    border-bottom: 0.3px aliceblue solid;
+  background-color: rgb(0, 121, 191);
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  color: aliceblue;
+  border-bottom: 0.3px aliceblue solid;
+}
+
+.navbarList {
+  margin: 10px;
+  display: flex;
+}
+
+.navbarElement {
+  margin-left: 20px;
+  list-style: none;
+  color: aliceblue;
+  padding: 10px;
+  padding-right: 20px;
+  transition: all 0.3s linear;
+  position: relative;
+}
+
+.navbarElement::after {
+  content: '^';
+  position: absolute;
+  top: 15px;
+  right: 5px;
+  transition: all 0.3s linear;
+}
+
+.navbarElement:hover:after {
+  transform: rotate(180deg);
+  top: 10px;
+  font-weight: 700;
+}
+
+.navbarElement:hover {
+  background-color: rgb(88, 160, 202);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.navbarUser {
+  width: 35px;
+  height: 35px;
+  filter: invert(100%);
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.navbarTitle {
+  padding-top: 20px;
+  cursor: pointer;
+}
+.navBarCon {
+  display: flex;
+}
+.navBarCon::after {
+  content: '';
+  width: 19px;
+  height: 14px;
+  --c: linear-gradient(rgb(88, 160, 202) 0 0);
+  background-color: #fff;
+  background: var(--c) 0% 0%, var(--c) 55% 0%;
+  background-size: 4.5px 50%, 4.5px 90%;
+  background-repeat: no-repeat;
+  position: relative;
+  right: 79px;
+  top: 24px;
+}
+.navBarCon:hover::after {
+  cursor: pointer;
+  width: 19px;
+  height: 14px;
+  --c: linear-gradient(rgb(88, 160, 202) 0 0);
+  background: var(--c) 0% 0%, var(--c) 55% 0%;
+
+  background-size: 4.5px 60%, 4.5px 100%;
+  background-repeat: no-repeat;
+  animation: b2 0.7s infinite linear;
+}
+@keyframes b2 {
+  20% {
+    background-size: 4.5px 60%, 4.5px 90%;
   }
-  .navbarList {
-    margin: 10px;
-    display: flex;
+  40% {
+    background-size: 4.5px 70%, 4.5px 80%;
   }
-  .navbarElement {
-    margin-left: 20px;
-    list-style: none;
-    color: aliceblue;
-    padding: 10px;
-    padding-right: 20px;
-    transition: all 0.3s linear;
-    position: relative;
+  60% {
+    background-size: 4.5px 80%, 4.5px 70%;
   }
-  .navbarElement::after {
-    content: "^";
-    position: absolute;
-    top: 15px;
-    right: 5px;
-    transition: all 0.3s linear;
+  80% {
+    background-size: 4.5px 90%, 4.5px 60%;
   }
-  .navbarElement:hover:after {
-    transform: rotate(180deg);
-    top: 10px;
-    font-weight: 700;
-  }
-  .navbarElement:hover {
-    background-color: rgb(88, 160, 202);
-    border-radius: 8px;
-    cursor: pointer;
-  }
-  .navbarUser {
-    width: 35px;
-    height: 35px;
-    filter: invert(100%);
-    margin-top: 10px;
-    cursor: pointer;
-  }
-  .navbarTitle{
-   padding-top: 20px;
-  }
-  
+}
+.custom-loader {
+  margin-top: 20px;
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+}

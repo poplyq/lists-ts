@@ -1,6 +1,6 @@
 import React, { FC, useState } from 'react';
 import '../AddCard/addcard.css';
-import { useActions } from '../../hooks/useActions';
+import { useCardsActions } from '../../hooks/useActions';
 import { ICard } from '../../types/types';
 
 interface AddCardProps {
@@ -8,7 +8,7 @@ interface AddCardProps {
   cardsArray: ICard[];
 }
 const AddCard: FC<AddCardProps> = ({ setIsAdd, cardsArray }) => {
-  const { AddCard } = useActions();
+  const { AddCard } = useCardsActions();
   const [desk, setDesk] = useState<string>('');
   const [task, setTask] = useState<string>('');
 
@@ -22,9 +22,9 @@ const AddCard: FC<AddCardProps> = ({ setIsAdd, cardsArray }) => {
   const click = (e: React.MouseEvent<HTMLButtonElement>) => {
     if (desk && task) {
       const newCard: ICard = {
-        cardIndex: cardsArray.length + 1,
+        cardOrder: cardsArray.length + 1,
         cardName: desk,
-        tasks: [{ taskIndex: 1, task: task }],
+        tasks: [{ taskOrder: 1, taskName: task }],
       };
       AddCard([...cardsArray, newCard]);
 
